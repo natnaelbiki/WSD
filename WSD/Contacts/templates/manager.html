@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% for man in object_list %}
+  <div class="row text-center">
+      <div class="col-md-12" style="background-color: purple;">
+        <div class="card">
+          <h6><center>{{man.name}}</center></h6>
+          <li type="none">Position: {{man.position}}</li>
+          <li type="none">Branch: {{man.branch}}</li>
+          {% if man.m_phone|length >  9 %}
+          <li type="none">Primary: {{man.m_phone}}</li>
+          {% else %}
+          <li>No Primary Phone</li>
+          {% endif %}
+          {% if man.m_phone1|length >  9 %}
+          <li type="none">Secondary: {{man.m_phone1}}</li>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <br/>
+  {% endfor %}
+{% endblock %}

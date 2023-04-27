@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+  <ul type="none">
+    <br/>
+    {% for br in object_list %}
+    <div class="row text-center" style="background-color: purple;">
+      <div class="col-md-12">
+        <div class="card">
+          <h6><center>{{br.name}}</center></h6>
+          {% if br.phone|length >  9 %}
+          <li>Primary: {{br.phone}}</li></br>
+          {% else %}
+          <li>No Primary Phone</li>
+          {% endif %}
+          {% if br.phone1|length > 9 %}
+          <li>Secondary: {{br.phone1}}</li></br>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <br/>
+    {% endfor %}
+  </ul>
+{% endblock %}

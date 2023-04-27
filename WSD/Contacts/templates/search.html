@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+<div class="container">
+  <ul class="nav bg-info">
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/managers">Managers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/branchs">Branches</a>
+    </li>
+    <li class="nav-item">
+      <input class="form-control border-end-0 border rounded-pill" type="text" value="search" id="example-search-input">
+    </li>
+  </ul>
+  {% block content %}
+  <ul type="none">
+    <br/>
+    {% for re in result %}
+    <div class="row text-center" style="background-color: purple;">
+      <div class="col-md-12">
+        <div class="card">
+          <h6><center>{{re.name}}</center></h6>
+          {% if re.phone|length >  9 %}
+          <li>Primary: {{br.phone}}</li></br>
+          {% else %}
+          <li>No Primary Phone</li>
+          {% endif %}
+          {% if re.phone1|length > 9 %}
+          <li>Secondary: {{br.phone1}}</li></br>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <br/>
+    {% endfor %}
+  </ul>
+  {% endblock %}
+</div>
+</body>
+</html>
